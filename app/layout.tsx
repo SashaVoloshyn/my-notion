@@ -1,3 +1,4 @@
+import { Toaster } from 'sonner';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						disableTransitionOnChange
 						storageKey='my-note-theme-2'
 					>
+						<Toaster position='bottom-center'/>
 						{children}
 					</ThemeProvider>
 				</ConvexClientProvider>
