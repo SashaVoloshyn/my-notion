@@ -131,7 +131,7 @@ export const Navigation = () => {
 					<Item onClick={handleCreate} label='New page' icon={PlusCircle} />
 				</div>
 				<div className='mt-4'>
-					<DocumentList/>
+					<DocumentList />
 				</div>
 				<div
 					onMouseDown={handleMouseDown}
