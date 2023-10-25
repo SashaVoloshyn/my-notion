@@ -9,6 +9,7 @@ import { useMutation } from 'convex/react';
 import { cn } from '@/lib/utils';
 import { api } from '@/convex/_generated/api';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useSearch } from '@/hooks/use-search';
 
 import UserItem from './user-item';
 import Item from './item';
@@ -20,6 +21,7 @@ export const Navigation = () => {
 	const pathname = usePathname();
 	const isMobile = useMediaQuery('(max-width: 768px)');
 	const create = useMutation(api.documents.create);
+	const search = useSearch();
 
 	const isResizingRef = useRef(false);
 	const sidebarRef = useRef<ElementRef<'aside'>>(null);
@@ -129,7 +131,7 @@ export const Navigation = () => {
 				</div>
 				<div>
 					<UserItem />
-					<Item label='Search' onClick={() => {}} icon={Search} isSearch />
+					<Item label='Search' onClick={search.onOpen} icon={Search} isSearch />
 					<Item label='Settings' onClick={() => {}} icon={Settings} />
 					<Item onClick={handleCreate} label='New page' icon={PlusCircle} />
 				</div>
@@ -141,7 +143,7 @@ export const Navigation = () => {
 							<Item label='Trash' icon={Trash} />
 						</PopoverTrigger>
 						<PopoverContent className='p-0 w-72 ' side={isMobile ? 'bottom' : 'right'}>
-							<TrashBox/>
+							<TrashBox />
 						</PopoverContent>
 					</Popover>
 				</div>
