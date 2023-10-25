@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { api } from '@/convex/_generated/api';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useSearch } from '@/hooks/use-search';
+import { useSettings } from '@/hooks/use-settings';
 
 import UserItem from './user-item';
 import Item from './item';
@@ -22,6 +23,7 @@ export const Navigation = () => {
 	const isMobile = useMediaQuery('(max-width: 768px)');
 	const create = useMutation(api.documents.create);
 	const search = useSearch();
+	const settings = useSettings();
 
 	const isResizingRef = useRef(false);
 	const sidebarRef = useRef<ElementRef<'aside'>>(null);
@@ -132,7 +134,7 @@ export const Navigation = () => {
 				<div>
 					<UserItem />
 					<Item label='Search' onClick={search.onOpen} icon={Search} isSearch />
-					<Item label='Settings' onClick={() => {}} icon={Settings} />
+					<Item label='Settings' onClick={settings.onOpen} icon={Settings} />
 					<Item onClick={handleCreate} label='New page' icon={PlusCircle} />
 				</div>
 				<div className='mt-4'>
